@@ -4,8 +4,8 @@ import mysql.connector
 mydb = mysql.connector.connect(
     host="localhost",  # Para todos asi
     user="Eli",  # Unico segun como se registraron el Workbench
-    password="Resident-1"
-    # database="Curso_Python"
+    password="Resident-1",
+    database="Curso_Python"
 )
 
 mycursor = mydb.cursor()
@@ -23,7 +23,7 @@ mycursor = mydb.cursor()
 
 ## Acceder a una database y crear una tabla dentro de ella ##
 
-# mycursor.execute("CREATE TABLE Prueba_1 (name VARCHAR(255), address VARCHAR(255))")
+# mycursor.execute("CREATE TABLE Prueba_2 (name VARCHAR(255), address VARCHAR(255), city VARCHAR(255), country VARCHAR(255))")
 
 ## Revisar que tablas existen ##
 
@@ -34,15 +34,16 @@ mycursor = mydb.cursor()
 
 ## Agregar clase id en tabla nueva
 
-# mycursor.execute("CREATE TABLE Prueba_1 (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))")
+# mycursor.execute("CREATE TABLE Prueba_3 (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), address VARCHAR(255))")
 
 ## Alterar tabla ya existente
 
-# mycursor.execute("ALTER TABLE Prueba_1 ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")
+# mycursor.execute("ALTER TABLE Prueba_2 ADD COLUMN number INT ")
+
 ## Agregar valores a la tabla
 
-# sql = "INSERT INTO Prueba_1 (name, address) VALUES (%s, %s)"
-# val = ("John", "Highway 21")
+# sql = "INSERT INTO Prueba_1 (name , address) VALUES (%s, %s)"
+# val = ("David", "Lowway 24")
 # mycursor.execute(sql, val)
 #
 # mydb.commit()
@@ -51,7 +52,7 @@ mycursor = mydb.cursor()
 
 ##Multiples Valores
 
-# sql = "INSERT INTO Prueba_1 (name, address) VALUES (%s, %s)"
+# sql = "INSERT INTO Prueba_1 (name, address) VALUES (%s, %s) "
 # val = [
 #   ('Peter', 'Lowstreet 4'),
 #   ('Amy', 'Apple st 652'),
@@ -71,7 +72,7 @@ mycursor = mydb.cursor()
 # mycursor.executemany(sql, val)
 #
 # mydb.commit()
-
+#
 # print(mycursor.rowcount, "was inserted.")
 
 ## Conseguir el ultimo ID
@@ -91,7 +92,7 @@ mycursor = mydb.cursor()
 # myresult = mycursor.fetchall()
 #
 # for x in myresult:
-#   print(x)
+#     print(x)
 
 ## Seleccionar una columna de una tabla
 
@@ -104,7 +105,7 @@ mycursor = mydb.cursor()
 
 ## Selecciona solo una fila
 
-# mycursor.execute("SELECT * FROM customers")
+# mycursor.execute("SELECT * FROM Prueba_1")
 #
 # myresult = mycursor.fetchone()
 #
@@ -112,7 +113,7 @@ mycursor = mydb.cursor()
 
 ## WHERE
 
-# sql = "SELECT * FROM customers WHERE address LIKE '%way%'"
+# sql = "SELECT * FROM Prueba_1 WHERE name LIKE '%way%'"
 #
 # mycursor.execute(sql)
 #
@@ -123,7 +124,7 @@ mycursor = mydb.cursor()
 
 ##  ORDER BY
 
-# sql = "SELECT * FROM customers ORDER BY name DESC"
+# sql = "SELECT * FROM Prueba_1 ORDER BY address DESC"
 #
 # mycursor.execute(sql)
 #
@@ -134,21 +135,12 @@ mycursor = mydb.cursor()
 
 ## UPDATE
 
-# sql = "UPDATE customers SET address = %s WHERE address = %s"
-# val = ("Valley 345", "Canyon 123")
+# sql = "UPDATE Prueba_1 SET address = %s WHERE address = %s"
+# val = ("Canyon 123", "Valley 345")
 #
 # mycursor.execute(sql, val)
 #
 # mydb.commit()
 #
 # print(mycursor.rowcount, "record(s) affected")
-
-## LIMIT
-
-# mycursor.execute("SELECT * FROM customers LIMIT 5 OFFSET 2")
-#
-# myresult = mycursor.fetchall()
-#
-# for x in myresult:
-#   print(x)
 
